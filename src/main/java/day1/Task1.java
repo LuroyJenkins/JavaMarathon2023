@@ -1,5 +1,13 @@
 package day1;
 
+/**
+ * @author Neil Alishev
+ * @student Nikita Starkov
+ *
+ * Вывести на экран слово “JAVA”, в строку, чтобы оно повторилось 10 раз, используя цикл while.
+ * Вывод в консоль должен быть таким: JAVA JAVA JAVA JAVA JAVA JAVA JAVA JAVA JAVA JAVA
+ */
+
 public class Task1 {
     public static void main(String[] args) {
         int i = 0;
