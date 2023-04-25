@@ -31,9 +31,9 @@ public class Task2 {
             array[i] = rand.nextInt(10000);
             if(array[i] > max_value)
                 max_value = array[i];
-            else if (array[i] < min_value)
+            if (array[i] < min_value)
                 min_value = array[i];
-            else if (array[i] % 10 == 0){
+            if (array[i] % 10 == 0){
                 decadesCounter++;
                 sumDecades += array[i];
             }
