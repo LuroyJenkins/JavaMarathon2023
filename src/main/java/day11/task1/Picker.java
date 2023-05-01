@@ -2,6 +2,8 @@ package day11.task1;
 
 public class Picker implements Worker {
     private int salary;
+    private static final int TASK_SALARY = 80;
+    private static final int TASK_BONUS = 70000;
     private boolean isPayed;
     private final Warehouse warehouse;
 
@@ -20,14 +22,14 @@ public class Picker implements Worker {
     }
 
     public void doWork() {
-        salary += 80;
-        warehouse.setCountPickedOrders(warehouse.getCountPickedOrders() + 1);
+        salary += TASK_SALARY;
+        warehouse.incrementCountPickedOrders();
     }
 
     @Override
     public void bonus() {
         if(warehouse.getCountPickedOrders() >= 10000 && !isPayed){
-            salary += 70000;
+            salary += TASK_BONUS;
             isPayed = true;
         }else if(isPayed){
             System.out.println("Бонус уже был выплачен");

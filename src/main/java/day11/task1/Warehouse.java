@@ -4,12 +4,12 @@ public class Warehouse {
     private int countPickedOrders;
     private int countDeliveredOrders;
 
-    public void setCountPickedOrders(int countPickedOrders) {
-        this.countPickedOrders = countPickedOrders;
+    public void incrementCountPickedOrders() {
+        countPickedOrders++;
     }
 
-    public void setCountDeliveredOrders(int countDeliveredOrders) {
-        this.countDeliveredOrders = countDeliveredOrders;
+    public void incrementCountDeliveredOrders() {
+        countDeliveredOrders++;
     }
 
     public int getCountPickedOrders() {
