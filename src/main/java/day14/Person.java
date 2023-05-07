@@ -6,14 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Task2 {
-    public static void main(String[] args) {
-        File file = new File("src/main/resources/people.txt");
-        System.out.println(parseFileToStringList(file));
+public class Person {
+    private String name;
+    private int year;
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.year = age;
     }
 
-    public static List<String> parseFileToStringList(File file){
-        List<String> peoples = new ArrayList<>();
+    public static List<Person> parseFileToObjList(File file){
+        List<Person> persons = new ArrayList<>();
 
         try {
             Scanner scanner = new Scanner(file);
@@ -22,7 +25,8 @@ public class Task2 {
                 String[] peoplesData = line.split(" ");
                 if(peoplesData[1].contains("-"))
                     throw new IllegalArgumentException();
-                peoples.add(line);
+                Person person = new Person(peoplesData[0], Integer.parseInt(peoplesData[1]));
+                persons.add(person);
             }
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
@@ -31,6 +35,14 @@ public class Task2 {
             System.out.println("Некорректный входной файл");
             return null;
         }
-        return peoples;
+        return persons;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "name='" + name + '\'' +
+                ", year=" + year +
+                '}';
     }
 }
