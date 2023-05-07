@@ -20,17 +20,16 @@ public class Task2 {
             while (scanner.hasNextLine()){
                 String line = scanner.nextLine();
                 String[] peoplesData = line.split(" ");
-                if(peoplesData[1].contains("-"))
+                if(Integer.parseInt(peoplesData[1]) < 0)
                     throw new IllegalArgumentException();
                 peoples.add(line);
             }
+            return peoples;
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
-            return null;
         } catch (IllegalArgumentException e){
             System.out.println("Некорректный входной файл");
-            return null;
         }
-        return peoples;
+        return null;
     }
 }
