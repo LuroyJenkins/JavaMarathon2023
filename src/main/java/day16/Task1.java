@@ -22,8 +22,7 @@ public class Task1 {
                 sum += Integer.parseInt(number);
                 counter++;
             }
-            System.out.print(((double) sum/counter) + " --> ");
-            System.out.printf("%.3f", (float) sum/counter);
+            System.out.printf(((double) sum/counter) + " --> %.3f",(float) sum/counter);
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
         }
