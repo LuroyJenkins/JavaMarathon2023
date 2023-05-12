@@ -8,9 +8,9 @@ public class ChessBoard {
     }
 
     public void print(){
-        for(int i = 0; i < 8; i++){
-            for(int j = 0; j < 8; j++){
-                System.out.print(chessPieces[i][j].getName());
+        for (ChessPiece[] chessPiece : chessPieces) {
+            for (int j = 0; j < chessPieces.length; j++) {
+                System.out.print(chessPiece[j].getName());
             }
             System.out.println();
         }
