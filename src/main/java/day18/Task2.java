@@ -7,16 +7,14 @@ public class Task2 {
 
     public static int count7(int number) {
 
-        if (number / 10 == 0) {
-            if (number % 10 == 7)
-                return 1;
-            else
-                return 0;
-        } else {
-            if (number % 10 == 7)
-                return 1 + count7(number / 10);
-            else
-                return count7(number / 10);
+        if (number == 0) {
+            return 0;
         }
+
+        if (number % 10 == 7)
+            return 1 + count7(number / 10);
+        else
+            return count7(number / 10);
+
     }
 }

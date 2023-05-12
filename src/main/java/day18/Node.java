@@ -30,6 +30,8 @@ public class Node {
     }
 
     public static void addNode(Node node, Node root) {
+        if(root == null)
+            throw new IllegalArgumentException("Корневой узел не может быть равен null");
         if (node.getValue() >= root.getValue()) {
             if (root.getRightSon() == null)
                 root.setRightSon(node);
