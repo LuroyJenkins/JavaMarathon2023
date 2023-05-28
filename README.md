@@ -20,4 +20,4 @@
 
 The project contains a folder structure according to each day of the marathon, the necessary source files and automated tests.
 
-**Authors:** Alishev Nail https://www.youtube.com/c/alishevN, Burlakov Sergei https://t.me/sergetonte
+**Authors:** [Alishev Nail](https://www.youtube.com/c/alishevN), [Burlakov Sergei](https://t.me/sergetonte)
