@@ -35,9 +35,19 @@ public class Task1 {
     }
 
     public static void popularWords(Map<String, Integer> map) {
+
+        // Implementation with ArrayList and its sorting:
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
+        list.sort(Map.Entry.comparingByValue());
+        for(int i = list.size() - 1; i > list.size() - 101; i--){
+            System.out.println(list.get(i).getKey() + " = " + list.get(i).getValue());
+        }
+
+        /* Implementation with streams:
         map.entrySet().stream()
                 .sorted(Comparator.comparing(Map.Entry<String, Integer>::getValue).reversed())
                 .limit(100)
                 .forEach(entry -> System.out.println(entry.getKey() + " : " + entry.getValue()));
+         */
     }
 }

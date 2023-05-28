@@ -12,20 +12,20 @@ import java.util.Scanner;
 public class Task2 {
     public static void main(String[] args) {
         File file = new File("src/main/resources/taxi_cars.txt");
-        Map<String, Point> taxiMap = readFile(file);
+        Map<Integer, Point> taxiMap = readFile(file);
         searchTaxiInSquare(taxiMap);
 
 
     }
 
-    public static Map<String, Point> readFile(File file) {
-        Map<String, Point> map = new HashMap<>();
+    public static Map<Integer, Point> readFile(File file) {
+        Map<Integer, Point> map = new HashMap<>();
         Scanner scanner;
         try {
             scanner = new Scanner(file);
             scanner.useDelimiter("[.,:;()?!\"\\s–]+");
             while (scanner.hasNext()) {
-                map.put(scanner.next(), new Point(scanner.nextInt(), scanner.nextInt()));
+                map.put(Integer.parseInt(scanner.next()), new Point(scanner.nextInt(), scanner.nextInt()));
             }
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден.");
@@ -33,27 +33,35 @@ public class Task2 {
         return map;
     }
 
-    public static void searchTaxiInSquare(Map<String, Point> map) {
+    public static void searchTaxiInSquare(Map<Integer, Point> taxiCars) {
         Scanner scanner = new Scanner(System.in);
-        int x1 = scanner.nextInt();
-        int y1 = scanner.nextInt();
-        int x2 = scanner.nextInt();
-        int y2 = scanner.nextInt();
         int counter = 0;
+        int[] squareCoordinates = new int[4];
+        for (int i = 0; i < squareCoordinates.length; i++){
+            squareCoordinates[i] = scanner.nextInt();
+        }
 
-        if (Math.abs(x1 - x2) == Math.abs(y1 - y2)) {
-            for (Map.Entry<String, Point> entry : map.entrySet()) {
-                if (((x1 < entry.getValue().getX() && entry.getValue().getX() < x2)
-                        || (x2 < entry.getValue().getX() && entry.getValue().getX() < x1))
-                        && ((y2 < entry.getValue().getY() && entry.getValue().getY() < y1)
-                        || (y1 < entry.getValue().getY() && entry.getValue().getY() < y2))) {
-                    System.out.println(entry.getKey());
+        if (isSquare(squareCoordinates)) {
+            for (Map.Entry<Integer, Point> taxiCar : taxiCars.entrySet()) {
+                if (isInside(taxiCar, squareCoordinates)) {
+                    System.out.println(taxiCar.getKey());
                     counter++;
                 }
             }
             System.out.println("Общее кол-во машин попавших в квадрат = " + counter);
         } else System.out.println("Вы ввели координаты не для квадрата!");
 
+    }
+
+    private static boolean isInside(Map.Entry<Integer, Point> taxiCar, int[] square){
+        int taxiX = taxiCar.getValue().getX();
+        int taxiY = taxiCar.getValue().getY();
+
+        return taxiX > square[0] && taxiX < square[2] && taxiY < square[1] && taxiY > square[3];
+    }
+
+    private static boolean isSquare(int[] squareCoordinates){
+        return Math.abs(squareCoordinates[0]-squareCoordinates[1]) == Math.abs(squareCoordinates[2] - squareCoordinates[3]);
     }
 }
 
